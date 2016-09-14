@@ -9,8 +9,8 @@ module.exports = function (options = {}) {
   const loaderInstance = loader()
     .load(options);
 
-  app.start = function () {
-    return loaderInstance.init(app, loaderInstance.handlers)
+  app.start = function (startOptions = {}) {
+    return loaderInstance.init(app, startOptions)
       .then(()=> {
         let port;
         const server = http.createServer(app.callback());
